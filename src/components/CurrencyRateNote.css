@@ -1,0 +1,31 @@
+.rate-note {
+  margin: 0.35rem 0 0.85rem;
+  padding: 0;
+}
+
+.rate-note__line {
+  margin: 0 0 0.35rem;
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.rate-note__line:last-child {
+  margin-bottom: 0;
+}
+
+.rate-note__link {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.rate-note__link:hover {
+  color: var(--color-primary);
+}
+
+.rate-note__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 54" fill="none" aria-hidden="true">
+  <g stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 10 C20 6, 44 6, 54 10" />
+    <path d="M10 44 C20 48, 44 48, 54 44" />
+    <path d="M8 10 L10 10 L10 8" />
+    <path d="M56 44 L54 44 L54 46" />
+    <circle cx="22" cy="27" r="12" />
+    <circle cx="42" cy="27" r="12" />
+    <path d="M34 27 H30" />
+  </g>
+  <text
+    x="22"
+    y="31"
+    text-anchor="middle"
+    fill="currentColor"
+    font-family="system-ui, sans-serif"
+    font-size="13"
+    font-weight="600"
+  >
+    $
+  </text>
+  <text
+    x="42"
+    y="31"
+    text-anchor="middle"
+    fill="currentColor"
+    font-family="system-ui, sans-serif"
+    font-size="13"
+    font-weight="600"
+  >
+    €
+  </text>
+</svg>

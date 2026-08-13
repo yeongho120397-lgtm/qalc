@@ -1,0 +1,89 @@
+.saved-list {
+  margin-left: calc(-1 * var(--main-padding-x, 1.25rem));
+  margin-right: calc(-1 * var(--main-padding-x, 1.25rem));
+  padding: 0.75rem var(--main-padding-x, 1.25rem) 0;
+  background: var(--color-page-bg);
+  border-top: 2px solid var(--color-border);
+}
+
+.saved-list__title {
+  margin: 0 0 0.65rem;
+  padding-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.saved-list__empty {
+  margin: 0;
+  padding-bottom: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.saved-list__items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.saved-list__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-top: 2px solid var(--color-border);
+}
+
+.saved-list__item:last-child {
+  border-bottom: 2px solid var(--color-border);
+}
+
+.saved-list__body {
+  flex: 1;
+  min-width: 0;
+  padding: 0.75rem 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text-body);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.saved-list__body:hover {
+  background: var(--color-hover-surface);
+}
+
+.saved-list__body:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.saved-list__delete {
+  flex-shrink: 0;
+  padding: 0.25rem 0.35rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.12s ease;
+}
+
+.saved-list__delete:hover {
+  color: var(--color-primary);
+}
+
+.saved-list__delete:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}

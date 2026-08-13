@@ -1,0 +1,77 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui,
+    'Segoe UI', 'Helvetica Neue', Arial, 'Apple SD Gothic Neo', 'Noto Sans KR',
+    'Malgun Gothic', sans-serif;
+
+  /* 배경 · surface */
+  --color-page-bg: #f3f5f8;
+  --color-surface: #ffffff;
+  --color-surface-subtle: #f8f9fb;
+
+  /* 브랜드 — 차분한 네이비 */
+  --color-primary: #223a70;
+  --color-primary-hover: #1e2f5e;
+  --color-primary-soft: #4a5f8c;
+
+  /* 텍스트 계층 */
+  --color-text: #111111;
+  --color-text-body: #333333;
+  --color-text-secondary: #666666;
+  --color-text-muted: #999999;
+  --color-text-disabled: #999999;
+  --color-text-placeholder: #bbbbbb;
+  --color-on-primary: #ffffff;
+
+  /* 선 / 보더 */
+  --color-border: #dde1e6;
+  --color-border-strong: #e1e4e8;
+
+  /* 비활성 / hover */
+  --color-disabled-bg: #eceef2;
+  --color-disabled-border: #d4d8de;
+  --color-hover-surface: #eef0f4;
+
+  /* 하위 호환 alias */
+  --color-bg: var(--color-page-bg);
+  --text-primary: var(--color-text);
+  --text-body: var(--color-text-body);
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-muted);
+  --text-disabled: var(--color-text-disabled);
+  --text-placeholder: var(--color-text-placeholder);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--color-page-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root,
+.app {
+  min-height: 100dvh;
+  background: var(--color-page-bg);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}

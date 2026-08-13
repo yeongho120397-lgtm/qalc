@@ -1,0 +1,33 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.app__main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: min(100%, 42rem);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--main-padding-x, 1.25rem);
+  overflow-x: hidden;
+}
+
+.app__spacer {
+  flex: 1;
+  min-height: 45vh;
+  background: var(--color-page-bg);
+}
+
+@media (min-width: 768px) {
+  .app__main {
+    width: min(100%, 44rem);
+    --main-padding-x: 1.5rem;
+  }
+
+  .app__spacer {
+    min-height: 50vh;
+  }
+}
