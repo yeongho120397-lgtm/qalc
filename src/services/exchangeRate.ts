@@ -1,19 +1,19 @@
 import type { LocaleCode } from '../locales'
 import { formatLocaleDateTime } from '../utils/formatLocale'
 
-/** ISO codes used by QALC currency conversion (uppercase for API). */
+/** ISO codes — global market order (USD first, major currencies, then regional). */
 export const CURRENCY_CODES = [
-  'KRW',
   'USD',
-  'JPY',
   'EUR',
   'GBP',
+  'JPY',
   'CNY',
+  'CHF',
   'CAD',
   'AUD',
-  'CHF',
-  'HKD',
   'SGD',
+  'HKD',
+  'KRW',
   'THB',
   'VND',
   'PHP',

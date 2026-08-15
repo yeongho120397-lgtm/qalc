@@ -66,7 +66,7 @@ export function ConverterRow({
         aria-label={t.swapUnits}
         onClick={onSwap}
       >
-        ⇄
+        ↔
       </button>
 
       <select
@@ -81,10 +81,6 @@ export function ConverterRow({
           </option>
         ))}
       </select>
-
-      <span className="converter-row__equals" aria-hidden="true">
-        =
-      </span>
 
       <p className="converter-row__result" aria-live="polite">
         <span

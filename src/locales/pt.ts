@@ -15,12 +15,18 @@ const pt: Translation = {
   toUnit: 'Unidade de destino',
   swapUnits: 'Trocar unidades',
   language: 'Idioma',
+  country: 'País',
   rateUpdated: 'Atualizado',
   rateDisclaimer:
     'As taxas de câmbio são apenas de referência. Valores reais de cartão, câmbio e alfândega podem diferir.',
   rateStale: 'Usando as últimas taxas salvas.',
   rateUnavailable: 'Taxas de câmbio indisponíveis.',
   unipassLink: '관세·통관 기준 확인 → UNIPASS',
+  copyResult: 'Copiar',
+  copied: 'Copiado',
+  clearAll: 'Limpar tudo',
+  clearAllConfirm: 'Limpar tudo?',
+  cancel: 'Cancelar',
 }
 
 export default pt

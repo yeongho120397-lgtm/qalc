@@ -15,11 +15,17 @@ export type Translation = {
   toUnit: string
   swapUnits: string
   language: string
+  country: string
   rateUpdated: string
   rateDisclaimer: string
   rateStale: string
   rateUnavailable: string
   unipassLink: string
+  copyResult: string
+  copied: string
+  clearAll: string
+  clearAllConfirm: string
+  cancel: string
 }
 
 export type LocaleMeta = {

@@ -104,19 +104,13 @@
   outline-offset: 2px;
 }
 
-.converter-row__equals {
-  flex-shrink: 0;
-  color: var(--color-text-secondary);
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
 .converter-row__result {
   display: flex;
   align-items: baseline;
   gap: 0.45rem;
-  margin: 0;
-  flex: 1 1 auto;
+  margin: 0.35rem 0 0;
+  flex: 1 1 100%;
+  width: 100%;
   min-width: 0;
   max-width: 100%;
 }
@@ -155,6 +149,6 @@
 
 @media (max-width: 639px) {
   .converter-row__result {
-    flex: 1 1 100%;
+    margin-top: 0.5rem;
   }
 }

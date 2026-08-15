@@ -10,11 +10,19 @@
   min-width: 0;
 }
 
+.header__side--start,
 .header__side--end {
   display: flex;
-  justify-content: flex-end;
   align-items: flex-start;
   padding-top: 0.15rem;
+}
+
+.header__side--start {
+  justify-content: flex-start;
+}
+
+.header__side--end {
+  justify-content: flex-end;
 }
 
 .header__mark {

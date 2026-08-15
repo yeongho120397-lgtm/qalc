@@ -4,21 +4,25 @@ import { CategoryTabs } from './components/CategoryTabs'
 import { ConverterRow } from './components/ConverterRow'
 import { CurrencyRateNote } from './components/CurrencyRateNote'
 import { SavedList } from './components/SavedList'
+import { AdBanner } from './components/AdBanner'
 import { CATEGORIES } from './data/categories'
-import { getDefaultUnitPair, getUnits } from './data/units'
+import { getUnits } from './data/units'
 import { useExchangeRates } from './hooks/useExchangeRates'
 import { useLocale } from './i18n/LocaleContext'
 import { getConversionValue } from './utils/convert'
 import { formatConversionNumber } from './utils/formatLocale'
+import {
+  readAppState,
+  writeAppState,
+  type AppUiState,
+  type CategoryState,
+} from './utils/appStateStorage'
 import {
   readSavedItems,
   writeSavedItems,
 } from './utils/savedItemsStorage'
 import type { CategoryId, SavedItem } from './types'
 import './App.css'
-
-const INITIAL_CATEGORY: CategoryId = 'currency'
-const initialPair = getDefaultUnitPair(INITIAL_CATEGORY)
 
 function createId(): string {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
@@ -28,13 +32,20 @@ function App() {
   const { locale } = useLocale()
   const { rates, updatedAt, status, isStale } = useExchangeRates()
 
-  const [categoryId, setCategoryId] = useState<CategoryId>(INITIAL_CATEGORY)
-  const [fromUnitId, setFromUnitId] = useState(initialPair.fromId)
-  const [toUnitId, setToUnitId] = useState(initialPair.toId)
-  const [amount, setAmount] = useState('')
+  const [appState, setAppState] = useState<AppUiState>(() =>
+    readAppState(locale),
+  )
   const [savedItems, setSavedItems] = useState<SavedItem[]>(() =>
     readSavedItems(),
   )
+
+  const { categoryId } = appState
+  const categoryState = appState.categories[categoryId]
+  const { fromUnitId, toUnitId, amount } = categoryState
+
+  useEffect(() => {
+    writeAppState(appState)
+  }, [appState])
 
   useEffect(() => {
     writeSavedItems(savedItems)
@@ -64,18 +75,28 @@ function App() {
     )
   }, [resultValue, categoryId, toUnitId, locale])
 
-  function handleCategoryChange(nextId: CategoryId) {
-    setCategoryId(nextId)
-    setAmount('')
+  function updateCategoryState(patch: Partial<CategoryState>) {
+    setAppState((prev) => ({
+      ...prev,
+      categories: {
+        ...prev.categories,
+        [prev.categoryId]: {
+          ...prev.categories[prev.categoryId],
+          ...patch,
+        },
+      },
+    }))
+  }
 
-    const pair = getDefaultUnitPair(nextId)
-    setFromUnitId(pair.fromId)
-    setToUnitId(pair.toId)
+  function handleCategoryChange(nextId: CategoryId) {
+    setAppState((prev) => ({ ...prev, categoryId: nextId }))
   }
 
   function handleSwap() {
-    setFromUnitId(toUnitId)
-    setToUnitId(fromUnitId)
+    updateCategoryState({
+      fromUnitId: toUnitId,
+      toUnitId: fromUnitId,
+    })
   }
 
   function handleSave() {
@@ -94,19 +115,30 @@ function App() {
         toSymbol: toUnit?.symbol,
       },
     ])
+    updateCategoryState({ amount: '' })
   }
 
   function handleDelete(id: string) {
     setSavedItems((prev) => prev.filter((item) => item.id !== id))
   }
 
-  function handleRestore(item: SavedItem) {
-    setCategoryId(item.categoryId)
-    setAmount(item.amount)
+  function handleClearAll() {
+    setSavedItems([])
+  }
 
-    const pair = getDefaultUnitPair(item.categoryId)
-    setFromUnitId(item.fromUnitId ?? pair.fromId)
-    setToUnitId(item.toUnitId ?? pair.toId)
+  function handleRestore(item: SavedItem) {
+    setAppState((prev) => ({
+      ...prev,
+      categoryId: item.categoryId,
+      categories: {
+        ...prev.categories,
+        [item.categoryId]: {
+          fromUnitId: item.fromUnitId ?? prev.categories[item.categoryId].fromUnitId,
+          toUnitId: item.toUnitId ?? prev.categories[item.categoryId].toUnitId,
+          amount: item.amount,
+        },
+      },
+    }))
   }
 
   return (
@@ -126,9 +158,9 @@ function App() {
           amount={amount}
           result={resultDisplay}
           toUnitSymbol={toUnit?.symbol}
-          onAmountChange={setAmount}
-          onFromChange={setFromUnitId}
-          onToChange={setToUnitId}
+          onAmountChange={(value) => updateCategoryState({ amount: value })}
+          onFromChange={(value) => updateCategoryState({ fromUnitId: value })}
+          onToChange={(value) => updateCategoryState({ toUnitId: value })}
           onSwap={handleSwap}
           onSave={handleSave}
           saveDisabled={!amount || resultValue === null}
@@ -145,8 +177,11 @@ function App() {
         <SavedList
           items={savedItems}
           onDelete={handleDelete}
+          onClearAll={handleClearAll}
           onRestore={handleRestore}
         />
+
+        <AdBanner />
 
         <div className="app__spacer" aria-hidden="true" />
       </main>

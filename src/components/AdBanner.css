@@ -1,0 +1,21 @@
+.ad-banner {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.ad-banner__slot {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 5.625rem;
+  overflow: hidden;
+}
+
+/* Future ad iframe / ins should stay within the content width */
+.ad-banner__slot :is(ins, iframe) {
+  display: block;
+  max-width: 100%;
+}

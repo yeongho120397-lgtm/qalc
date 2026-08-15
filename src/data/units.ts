@@ -67,7 +67,7 @@ export const UNITS_BY_CATEGORY: Record<CategoryId, Unit[]> = {
 }
 
 const DEFAULT_UNIT_PAIR: Record<CategoryId, { fromId: string; toId: string }> = {
-  currency: { fromId: 'krw', toId: 'usd' },
+  currency: { fromId: 'usd', toId: 'usd' },
   length: { fromId: 'm', toId: 'cm' },
   weight: { fromId: 'kg', toId: 'g' },
 }

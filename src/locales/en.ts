@@ -15,12 +15,18 @@ const en: Translation = {
   toUnit: 'To unit',
   swapUnits: 'Swap units',
   language: 'Language',
+  country: 'Country',
   rateUpdated: 'Updated',
   rateDisclaimer:
     'Exchange rates are for reference only. Actual card payments, currency exchange, and customs amounts may differ.',
   rateStale: 'Using last saved rates.',
   rateUnavailable: 'Exchange rates unavailable right now.',
   unipassLink: '관세·통관 기준 확인 → UNIPASS',
+  copyResult: 'Copy',
+  copied: 'Copied',
+  clearAll: 'Clear all',
+  clearAllConfirm: 'Clear all?',
+  cancel: 'Cancel',
 }
 
 export default en

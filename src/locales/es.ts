@@ -15,12 +15,18 @@ const es: Translation = {
   toUnit: 'Unidad de destino',
   swapUnits: 'Intercambiar unidades',
   language: 'Idioma',
+  country: 'País',
   rateUpdated: 'Actualizado',
   rateDisclaimer:
     'Los tipos de cambio son solo de referencia. Los importes reales de tarjeta, cambio y aduanas pueden diferir.',
   rateStale: 'Usando los últimos tipos guardados.',
   rateUnavailable: 'Tipos de cambio no disponibles.',
   unipassLink: '관세·통관 기준 확인 → UNIPASS',
+  copyResult: 'Copiar',
+  copied: 'Copiado',
+  clearAll: 'Borrar todo',
+  clearAllConfirm: '¿Borrar todo?',
+  cancel: 'Cancelar',
 }
 
 export default es
