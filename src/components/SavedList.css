@@ -130,7 +130,7 @@
   background: transparent;
   color: var(--color-text-body);
   font: inherit;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 500;
   line-height: 1.4;
   text-align: left;
@@ -176,7 +176,7 @@
   background: transparent;
   color: var(--color-primary);
   font: inherit;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   font-weight: 500;
   line-height: 1.2;
   cursor: pointer;
