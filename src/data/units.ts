@@ -1,3 +1,4 @@
+import type { LocaleCode } from '../locales'
 import type { CategoryId, Unit } from '../types'
 import { CURRENCY_CODES } from '../services/exchangeRate'
 
@@ -67,18 +68,40 @@ export const UNITS_BY_CATEGORY: Record<CategoryId, Unit[]> = {
 }
 
 const DEFAULT_UNIT_PAIR: Record<CategoryId, { fromId: string; toId: string }> = {
-  currency: { fromId: 'usd', toId: 'usd' },
+  currency: { fromId: 'usd', toId: 'krw' },
   length: { fromId: 'm', toId: 'cm' },
   weight: { fromId: 'kg', toId: 'g' },
+}
+
+/** First-run currency pair by UI language — never the same code on both sides */
+const DEFAULT_CURRENCY_BY_LOCALE: Partial<
+  Record<LocaleCode, { fromId: string; toId: string }>
+> = {
+  ko: { fromId: 'usd', toId: 'krw' },
+  ja: { fromId: 'usd', toId: 'jpy' },
+  zh: { fromId: 'usd', toId: 'cny' },
+  en: { fromId: 'usd', toId: 'eur' },
+  es: { fromId: 'usd', toId: 'eur' },
+  pt: { fromId: 'usd', toId: 'eur' },
+  ru: { fromId: 'usd', toId: 'rub' },
 }
 
 export function getUnits(categoryId: CategoryId): Unit[] {
   return UNITS_BY_CATEGORY[categoryId]
 }
 
-export function getDefaultUnitPair(categoryId: CategoryId): {
+export function getDefaultUnitPair(
+  categoryId: CategoryId,
+  locale?: LocaleCode,
+): {
   fromId: string
   toId: string
 } {
+  if (categoryId === 'currency') {
+    return (
+      (locale && DEFAULT_CURRENCY_BY_LOCALE[locale]) ??
+      DEFAULT_UNIT_PAIR.currency
+    )
+  }
   return DEFAULT_UNIT_PAIR[categoryId]
 }

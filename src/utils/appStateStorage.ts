@@ -17,8 +17,11 @@ export type AppUiState = {
 
 const CATEGORY_IDS: CategoryId[] = ['currency', 'length', 'weight']
 
-function defaultCategoryState(categoryId: CategoryId): CategoryState {
-  const pair = getDefaultUnitPair(categoryId)
+function defaultCategoryState(
+  categoryId: CategoryId,
+  locale?: LocaleCode,
+): CategoryState {
+  const pair = getDefaultUnitPair(categoryId, locale)
   return {
     fromUnitId: pair.fromId,
     toUnitId: pair.toId,
@@ -26,19 +29,32 @@ function defaultCategoryState(categoryId: CategoryId): CategoryState {
   }
 }
 
-export function createDefaultAppState(_locale: LocaleCode): AppUiState {
-  const currency = getDefaultUnitPair('currency')
-
+export function createDefaultAppState(locale: LocaleCode): AppUiState {
   return {
     categoryId: 'currency',
     categories: {
+      currency: defaultCategoryState('currency', locale),
+      length: defaultCategoryState('length', locale),
+      weight: defaultCategoryState('weight', locale),
+    },
+  }
+}
+
+/** Fix legacy first-run state where both sides were the same currency (e.g. USD↔USD). */
+function normalizeAppState(state: AppUiState, locale: LocaleCode): AppUiState {
+  const currency = state.categories.currency
+  if (currency.fromUnitId !== currency.toUnitId) return state
+
+  const pair = getDefaultUnitPair('currency', locale)
+  return {
+    ...state,
+    categories: {
+      ...state.categories,
       currency: {
-        fromUnitId: currency.fromId,
-        toUnitId: currency.toId,
-        amount: '',
+        ...currency,
+        fromUnitId: pair.fromId,
+        toUnitId: pair.toId,
       },
-      length: defaultCategoryState('length'),
-      weight: defaultCategoryState('weight'),
     },
   }
 }
@@ -81,7 +97,7 @@ export function readAppState(locale: LocaleCode): AppUiState {
     if (!raw) return createDefaultAppState(locale)
 
     const parsed = parseAppUiState(JSON.parse(raw) as unknown)
-    if (parsed) return parsed
+    if (parsed) return normalizeAppState(parsed, locale)
   } catch {
     // ignore
   }

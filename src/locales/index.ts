@@ -47,6 +47,24 @@ export function isLocaleCode(value: string): value is LocaleCode {
   return value in translations
 }
 
+/** Map browser language (ko-KR, en-US, …) to a supported app locale. */
+export function detectBrowserLocale(): LocaleCode {
+  if (typeof navigator === 'undefined') return DEFAULT_LOCALE
+
+  const candidates = [
+    ...(navigator.languages ?? []),
+    navigator.language,
+  ].filter(Boolean)
+
+  for (const raw of candidates) {
+    const lower = raw.toLowerCase()
+    const base = lower.split('-')[0]
+    if (isLocaleCode(base)) return base
+  }
+
+  return DEFAULT_LOCALE
+}
+
 export function getTranslation(locale: LocaleCode): Translation {
   return translations[locale] ?? translations[DEFAULT_LOCALE]
 }

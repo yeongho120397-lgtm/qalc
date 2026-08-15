@@ -8,7 +8,7 @@ import {
   type ReactNode,
 } from 'react'
 import {
-  DEFAULT_LOCALE,
+  detectBrowserLocale,
   getLocaleMeta,
   getTranslation,
   isLocaleCode,
@@ -36,7 +36,7 @@ function readStoredLocale(): LocaleCode {
   } catch {
     // ignore storage errors
   }
-  return DEFAULT_LOCALE
+  return detectBrowserLocale()
 }
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
