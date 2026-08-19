@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">QALC</string>
+    <string name="title_activity_main">QALC</string>
+    <string name="package_name">com.qalc.app</string>
+    <string name="custom_url_scheme">com.qalc.app</string>
+</resources>
