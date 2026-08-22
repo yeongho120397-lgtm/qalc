@@ -33,7 +33,7 @@ export type ExchangeRateSnapshot = {
   source: 'live' | 'cache'
 }
 
-export const EXCHANGE_RATE_STORAGE_KEY = 'qalc-exchange-rates'
+export const EXCHANGE_RATE_STORAGE_KEY = 'qelk-exchange-rates'
 
 /** Open Access updates ~daily; refresh while app is open at this interval. */
 export const EXCHANGE_REFRESH_MS = 6 * 60 * 60 * 1000

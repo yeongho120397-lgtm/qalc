@@ -2,7 +2,7 @@ import { getDefaultUnitPair } from '../data/units'
 import type { LocaleCode } from '../locales'
 import type { CategoryId } from '../types'
 
-export const APP_STATE_STORAGE_KEY = 'qalc-app-state'
+export const APP_STATE_STORAGE_KEY = 'qelk-app-state'
 
 export type CategoryState = {
   fromUnitId: string

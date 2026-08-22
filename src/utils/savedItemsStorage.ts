@@ -1,7 +1,7 @@
 import type { CategoryId, SavedItem } from '../types'
 
-/** Separate from locale (`qalc-locale`) and rates (`qalc-exchange-rates`). */
-export const SAVED_ITEMS_STORAGE_KEY = 'qalc-saved-items'
+/** Separate from locale (`qelk-locale`) and rates (`qelk-exchange-rates`). */
+export const SAVED_ITEMS_STORAGE_KEY = 'qelk-saved-items'
 
 const CATEGORY_IDS = new Set<CategoryId>(['currency', 'length', 'weight'])
 

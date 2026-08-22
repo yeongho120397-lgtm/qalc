@@ -1,4 +1,4 @@
-package com.qalc.app;
+package com.qelk.app;
 
 import com.getcapacitor.BridgeActivity;
 

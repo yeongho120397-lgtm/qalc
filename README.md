@@ -1,4 +1,4 @@
-# QALC
+# QELK
 
 Quick. Easy. Calculate.
 

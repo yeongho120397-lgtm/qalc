@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli'
 
 const config: CapacitorConfig = {
-  appId: 'com.qalc.app',
-  appName: 'QALC',
+  appId: 'com.qelk.app',
+  appName: 'QELK',
   webDir: 'dist',
 }
 

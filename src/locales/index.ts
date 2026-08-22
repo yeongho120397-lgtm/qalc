@@ -11,7 +11,7 @@ export type { LocaleCode, LocaleMeta, Translation }
 
 export const DEFAULT_LOCALE: LocaleCode = 'en'
 
-export const LOCALE_STORAGE_KEY = 'qalc-locale'
+export const LOCALE_STORAGE_KEY = 'qelk-locale'
 
 export const LOCALE_TAGS: Record<LocaleCode, string> = {
   en: 'en-US',
